@@ -1,0 +1,20 @@
+apply plugin: 'java'
+
+jar {
+    baseName = 'multiset-impl.jar'
+    destinationDir = file('.')
+    manifest {
+        attributes(
+              'Class-Path': 'multiset.jar'
+        )
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile files('multiset.jar')
+    testCompile 'junit:junit:[4,)'
+}
