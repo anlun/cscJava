@@ -1,10 +1,8 @@
 package ru.compscicenter.java2013.collections;
 
-import com.sun.istack.internal.NotNull;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.lang.reflect.Array;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -35,7 +33,7 @@ public class MultiSetImpl<E> implements MultiSet<E> {
 
     private class MyIterator implements Iterator<E> {
         public MyIterator() {
-            myMapIterator = mySetMap.entrySet().iterator();
+            myMapIterator     = mySetMap.entrySet().iterator();
             myCurElementCount = null;
             myCurElement      = null;
         }
@@ -54,7 +52,7 @@ public class MultiSetImpl<E> implements MultiSet<E> {
 
         @Override
         public boolean hasNext() {
-            return (myCurElementCount > 0) || myMapIterator.hasNext();
+            return (myCurElementCount != null && myCurElementCount > 0) || myMapIterator.hasNext();
         }
 
         @Override
@@ -91,7 +89,10 @@ public class MultiSetImpl<E> implements MultiSet<E> {
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        throw new NotImplementedException(); //TODO
+        for (E e : c) {
+            add(e);
+        }
+        return true;
     }
 
     private int getOccurrences(Object e) {
@@ -189,7 +190,6 @@ public class MultiSetImpl<E> implements MultiSet<E> {
 
         T[] resultArray = a;
         if (resultArray.length < mySize) {
-            //TODO: check
             resultArray = (T[]) Array.newInstance(a.getClass().getComponentType(), mySize);
         } else {
             for (int i = mySize; i < resultArray.length; i++) {
@@ -264,7 +264,7 @@ public class MultiSetImpl<E> implements MultiSet<E> {
     }
 
     private Map<Object, Integer> initMap() {
-        return null; //TODO
+        return new HashMap<Object, Integer>();
     }
 
     Map<Object, Integer> mySetMap;

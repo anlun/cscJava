@@ -1,7 +1,7 @@
 apply plugin: 'java'
 
 jar {
-    baseName = 'multiset-impl.jar'
+    baseName = 'multiset-impl'
     destinationDir = file('.')
     manifest {
         attributes(
