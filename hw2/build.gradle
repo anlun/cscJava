@@ -1,0 +1,21 @@
+apply plugin: 'java'
+
+jar {
+    baseName = 'solver'
+    destinationDir = file('.')
+    manifest {
+        attributes(
+                'Solver-Class': 'ru.compscicenter.java2013.electro.ElectricProblemSolverImpl'
+              ,   'Class-Path': 'electroapi.jar'
+        )
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile files('electroapi.jar')
+    testCompile 'junit:junit:[4,)'
+}

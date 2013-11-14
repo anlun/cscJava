@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="electroapi">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/electroapi.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
