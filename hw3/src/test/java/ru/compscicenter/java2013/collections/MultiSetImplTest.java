@@ -121,6 +121,27 @@ public class MultiSetImplTest {
     }
 
     @Test
+    public void testToArrayT_creation() {
+        MultiSetImpl<Integer> set = new MultiSetImpl<Integer>();
+        set.add(1);
+        set.add(2);
+        set.add(3);
+        set.add(4);
+        set.add(1);
+        set.add(2);
+        set.add(3);
+        set.add(4);
+
+//        set.remove(3, 2);
+
+        Integer[] ints = {-1, -2, -3, -4, -8, -9};
+        Object[] objects = set.toArray(ints);
+        for (Object i: objects) {
+            System.out.println(i);
+        }
+    }
+
+    @Test
     public void testRetainAll() {
         MultiSetImpl<Integer> set = new MultiSetImpl<Integer>();
         set.add(1);
